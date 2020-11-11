@@ -1,68 +1,115 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Documentation React Todo List
+Autheur : Noé Berdoz
+Repo Github: https://github.com/NoeBerdoz/react-todolist-animation-pwa.git
+Ancien repo: https://github.com/NoeBerdoz/react-todolist-pwa/tree/feature/animation_component
 
-## Available Scripts
+## Start application
 
-In the project directory, you can run:
+### `Clone the repo`
+
+### `npm i`
 
 ### `npm start`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Projet
+L'application React Todo List a pour but de permettre à un utilisateur de créer une liste
+de tâche et de pouvoir l'utiliser sur son téléphone.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Sources et tutoriels
+Créations des principales fonctionnalités.
+https://www.kirupa.com/react/simple_todo_app_react.htm
 
-### `npm test`
+Vidéos sur l'implémentation des données persistantes.
+https://youtu.be/ncBSWL1tkr0
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Example de projet React avec les données persistantes.
+https://codepen.io/simonswiss/pen/EVrGeb
 
-### `npm run build`
+Inspiration.
+https://codepen.io/saawsan/pen/jayzeq
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Stocker les données en local
+Utilisation du LocalStorage
+https://developer.mozilla.org/fr/docs/Web/API/Storage/LocalStorage
+```javascript
+componentDidUpdate(prevProps, prevState, snapshot) {
+        localStorage.setItem('items', JSON.stringify(this.state.items))
+    }
+```
+Pour voir les données enregistrées :
+Outil de développeur -> Application
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Design système
+Mise en place du système Material-UI
+Rendre le projet responsive via les grilles. 
+https://material-ui.com/discover-more/backers/#diamond
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Identité visuelle
+Palette de couleurs utilisée : 
+https://color.adobe.com/fr/search?q=Scalable%20Foods%20Presentations
 
-### `npm run eject`
+## Animation
+Librairie d'animation *React Spring*
+https://www.react-spring.io/
+    
+    - Animation du texte d'entrée
+      Fichier: components/TextFlipAnimated.js
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Implémentation du module *Flip Move*
+https://github.com/joshwcomeau/react-flip-move
+    
+    - Animation des créations et suppressions des tâches
+```javascript
+<ul className="theList">
+                <FlipMove duration={250} easing="ease-out">
+                    {listItems}
+                </FlipMove>
+            </ul>
+```    
+    
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Utilisation des *CSS @keyframes*
+https://www.w3schools.com/css/css3_animations.asp
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+    - Animation bounce sur le bouton
+      Fichier : src/css/title.css
+    - Animation au premier chargement
+      Fichier : src/css/TodoList.css
+    
+## PWA
+Implémentation du *service Worker*.
+Cela permet d'utiliser l'application même en étant hors ligne.
+Les services Workers pré-mettent en cache les ressources clés de l'application
+et permettent à ma PWA de se charger instantanément et de fournir une expérience
+instantanée et fiable aux utilisateurs, quel que soit l'état du réseau.
+https://medium.com/@toricpope/transform-a-react-app-into-a-progressive-web-app-pwa-dea336bd96e6
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Utilisation de l'outil Google open-source *Lighthouse* pour contrôler
+l'optimisation PWA de mon application.
+https://developers.google.com/web/tools/lighthouse
 
-## Learn More
+https://developer.mozilla.org/fr/docs/Web/Progressive_web_apps/Installable_PWAs
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Suite ? 
+Mettre en place un status pour les tâches (faites ou à faire) avec animations.
+Ajouter une animation au scroll des éléments.
+Animer le logo SVG.
+Déployer l'application pour pouvoir l'installer.
+Les prérequis sont les suivants :
+    
+    - Un manifeste web, avec les bons champs renseignés
+      Dans index.html : 
+      ```html
+      <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+      ```
+      
+    - Le site web à servir depuis un domaine sécurisé (HTTPS)
+      Dépendra du serveur de déployement
+      
+    - Un icone représentant l'application sur l'appareil
+      Fichier : /public/image/todo512.png
+        
+    - Un service worker enregistré pour permettre
+      à l'application de fonctionner en mode déconnecté 
+      (ceci n'est actuellement imposé que par Chrome pour Android)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify

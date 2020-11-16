@@ -3,6 +3,10 @@ Autheur : Noé Berdoz
 Repo Github: https://github.com/NoeBerdoz/react-todolist-animation-pwa.git
 Ancien repo: https://github.com/NoeBerdoz/react-todolist-pwa/tree/feature/animation_component
 
+## Production 
+Vous pouvez installer la PWA ici :
+https://eager-blackwell-b69808.netlify.app/
+
 ## Start application
 
 ### `Clone the repo`

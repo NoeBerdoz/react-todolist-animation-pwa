@@ -1,6 +1,6 @@
 # Documentation React Todo List
 Autheur : Noé Berdoz
-Repo Github: https://github.com/NoeBerdoz/react-todolist-animation-pwa.git
+Repo Github: https://github.com/NoeBerdoz/react-todolist-animation-pwa.git  
 Ancien repo: https://github.com/NoeBerdoz/react-todolist-pwa/tree/feature/animation_component
 
 ## Production 
@@ -98,7 +98,7 @@ https://developer.mozilla.org/fr/docs/Web/Progressive_web_apps/Installable_PWAs
 Mettre en place un status pour les tâches (faites ou à faire) avec animations.
 Ajouter une animation au scroll des éléments.
 Animer le logo SVG.
-Déployer l'application pour pouvoir l'installer.
+Déployer l'application pour pouvoir l'installer.  
 Les prérequis sont les suivants :
     
     - Un manifeste web, avec les bons champs renseignés
